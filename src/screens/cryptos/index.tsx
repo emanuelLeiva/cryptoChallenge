@@ -1,44 +1,44 @@
 import React from 'react';
 import {View, FlatList} from 'react-native';
-import Cryptoitems from '../../components/cryptoList/';
-import Header from '../../components/header';
-import Button from '../add/index';
-import {ButtonAdd} from './style';
+import Cryptoitems from '../../components/CryptoList';
+import Header from '../../components/Header';
+import Button from '../Add/index';
+import { AddButton } from './style';
 const crypto = [
   {
-    Name: 'Bitcoin',
+    name: 'Bitcoin',
     id: '1',
     symbol: 'BCT',
     img: require('../../assets/BitLog.png'),
     market_data: {
       price_usd: 7.21568,
-      percent_change_usd_last_24_hours: 1.82,
+      percentusd: 1.82,
     },
   },
   {
-    Name: 'Ethereum',
+    name: 'Ethereum',
+    
     id: '2',
     symbol: 'ETH',
     img: require('../../assets/ether.png'),
     market_data: {
       price_usd: 146.86,
-      percent_change_usd_last_24_hours: 1.46,
+      percentusd: 1.46,
     },
   },
   {
-    Name: 'XRP',
+    name: 'XRP',
     id: '3',
     symbol: 'XRP',
     img: require('../../assets/xrp-logo.png'),
     market_data: {
       price_usd: 0.220568,
-      percent_change_usd_last_24_hours: -2.47,
+      percentusd: -2.47,
     },
   },
 ];
 
-const List = () => {
-  return (
+const List = () => (
     <View>
       <View>
         <Header />
@@ -48,11 +48,11 @@ const List = () => {
           renderItem={({item}) => <Cryptoitems item={item} />}
         />
       </View>
-      <ButtonAdd>
+      <AddButton>
         <Button />
-      </ButtonAdd>
+      </AddButton>
     </View>
   );
-};
+;
 
 export default List;

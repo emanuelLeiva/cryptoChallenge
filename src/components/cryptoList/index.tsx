@@ -14,42 +14,38 @@ import {
   Separator,
 } from './style';
 import ArrowUp from '../../assets/arrowup.png';
-import ArrowDown from '../../assets/arrowdown.png';
+import ArrowDown from '../../assets/arrowd.png';
+import { CryptoitemsProps } from './types';
 
-const Cryptoitems = ({item}: any) => {
-  const {Name, symbol, img, market_data} = item;
+const Cryptoitems = 
+({item: {name, symbol, img, market_data}}: CryptoitemsProps ) =>
+  <>
+    <Container>
+      <LogoContainer>
+        <Logo source={img} />
+      </LogoContainer>
 
-  return (
-    <>
-      <Container>
-        <LogoContainer>
-          <Logo source={img} />
-        </LogoContainer>
+      <NameContainer>
+        <NameCryp>{name}</NameCryp>
+        <NameSym>{symbol}</NameSym>
+      </NameContainer>
 
-        <NameContainer>
-          <NameCryp>{Name}</NameCryp>
-          <NameSym>{symbol}</NameSym>
-        </NameContainer>
+      <PriceContainer>
+        <Price>${market_data.price_usd}</Price>
+        <PreArrow>
+          <ArrowD
+            source={market_data.percentusd > 0
+              ? ArrowUp
+              : ArrowDown} />
+          <Percentage isUp={market_data.percentusd < 0}>
+            {market_data.percentusd}%{' '}
+          </Percentage>
+        </PreArrow>
+      </PriceContainer>
+    </Container>
+    <Separator />
+  </>
 
-        <PriceContainer>
-          <Price>${market_data.price_usd}</Price>
-          <PreArrow>
-            <ArrowD
-              source={
-                market_data.percent_change_usd_last_24_hours > 0
-                  ? ArrowUp
-                  : ArrowDown
-              }
-            />
-            <Percentage isUp={market_data.percent_change_usd_last_24_hours < 0}>
-              {market_data.percent_change_usd_last_24_hours}{' '}
-            </Percentage>
-          </PreArrow>
-        </PriceContainer>
-      </Container>
-      <Separator />
-    </>
-  );
-};
+;
 
 export default Cryptoitems;

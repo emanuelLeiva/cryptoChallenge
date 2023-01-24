@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const ButtonAdd = styled.View`
+export const AddButton = styled.View`
   display: flex;
   align-items: center;
   font-weight: 400;

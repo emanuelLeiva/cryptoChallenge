@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-export const ImageStyle = styled.Image`
+export const ProfileImage = styled.Image`
   margin-top: 20px;
   width: 48px;
   height: 48px;
@@ -7,8 +7,7 @@ export const ImageStyle = styled.Image`
 `;
 
 export const Head = styled.View`
-  padding: 26px;
-  height: 125px;
+  padding: 30px;
   background-color: ${({theme}) => theme.colors.main};
   display: flex;
   flex-direction: row;
