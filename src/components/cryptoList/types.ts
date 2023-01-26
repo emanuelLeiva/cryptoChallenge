@@ -1,18 +1,20 @@
-import { ImageSourcePropType } from "react-native";
-
+import {ImageSourcePropType} from 'react-native';
 
 export type StyleTypes = {
-    isUp?: boolean;
-  }
+  isUp?: boolean;
+};
 
-  export type CryptoitemsProps = {
-    item: {
-      name: string,
-      symbol: string,
-      img: ImageSourcePropType,
-      market_data: {
-        price_usd: number,
-        percentusd: number,
-      },
-    }
-  } 
+export type CryptoitemsProps = {
+  item: Crypto;
+};
+
+export type Crypto = {
+  id: string;
+  name: string;
+  symbol: string;
+  img: ImageSourcePropType;
+  market_data: {
+    price_usd: number;
+    percent_change_usd_last_24_hours: number;
+  };
+};

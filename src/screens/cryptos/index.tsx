@@ -1,49 +1,34 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, FlatList} from 'react-native';
-import Cryptoitems from '../../components/CryptoList';
-import Header from '../../components/Header';
-import Button from '../Add/index';
-import { AddButton } from './style';
-const crypto = [
-  {
-    name: 'Bitcoin',
-    id: '1',
-    symbol: 'BCT',
-    img: require('../../assets/BitLog.png'),
-    market_data: {
-      price_usd: 7.21568,
-      percentusd: 1.82,
-    },
-  },
-  {
-    name: 'Ethereum',
-    
-    id: '2',
-    symbol: 'ETH',
-    img: require('../../assets/ether.png'),
-    market_data: {
-      price_usd: 146.86,
-      percentusd: 1.46,
-    },
-  },
-  {
-    name: 'XRP',
-    id: '3',
-    symbol: 'XRP',
-    img: require('../../assets/xrp-logo.png'),
-    market_data: {
-      price_usd: 0.220568,
-      percentusd: -2.47,
-    },
-  },
-];
+import Cryptoitems from '../../components/cryptoList';
+import Header from '../../components/header';
+import Button from '../add/index';
+import {AddButton} from './style';
+import axios from 'axios';
+import {Crypto} from '../../components/cryptoList/types';
 
-const List = () => (
+const cryptoslogo = ['btc', 'eth', 'xrp', 'ada'];
+
+function List() {
+  const [cryptos, setCryptos] = useState<Crypto[]>([]);
+
+  useEffect(() => {
+    setCryptos([]);
+    const getCryptos = async (coin: string) => {
+      const URL = `https://data.messari.io/api/v1/assets/${coin}/metrics#`;
+      const cryptos = await axios.get(URL);
+      console.log('Cryptos', cryptos.data.data);
+      setCryptos(prev => [...prev, cryptos.data.data]);
+      console.log(cryptos);
+    };
+    cryptoslogo.forEach(cryptos => getCryptos(cryptos));
+  }, []);
+  return (
     <View>
       <View>
         <Header />
         <FlatList
-          data={crypto}
+          data={cryptos}
           keyExtractor={({id}) => id}
           renderItem={({item}) => <Cryptoitems item={item} />}
         />
@@ -53,6 +38,6 @@ const List = () => (
       </AddButton>
     </View>
   );
-;
+}
 
 export default List;
