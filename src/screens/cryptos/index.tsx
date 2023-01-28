@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {View, FlatList} from 'react-native';
 import Cryptoitems from '../../components/cryptoList';
 import Header from '../../components/header';
-import Button from '../add/index';
+import Button from '../../components/AddCrypto';
 import {AddButton} from './style';
 import axios from 'axios';
 import {Crypto} from '../../components/cryptoList/types';
-
+import {API_URL} from '@env';
 const cryptoslogo = ['btc', 'eth', 'xrp', 'ada'];
 
 function List() {
@@ -15,11 +15,10 @@ function List() {
   useEffect(() => {
     setCryptos([]);
     const getCryptos = async (coin: string) => {
-      const URL = `https://data.messari.io/api/v1/assets/${coin}/metrics#`;
+      const URL = `${API_URL}${coin}/metrics#`;
+      console.log('API_URL', API_URL);
       const cryptos = await axios.get(URL);
-      console.log('Cryptos', cryptos.data.data);
       setCryptos(prev => [...prev, cryptos.data.data]);
-      console.log(cryptos);
     };
     cryptoslogo.forEach(cryptos => getCryptos(cryptos));
   }, []);

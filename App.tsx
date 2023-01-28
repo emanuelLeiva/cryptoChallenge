@@ -2,10 +2,9 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {ThemeProvider} from 'styled-components/native';
 import theme from './src/themes';
-import crypto from './src/screens/cryptos';
+import Cryptos from './src/screens/Cryptos';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import addCrypto from './src/screens/add';
 
 const stack = createStackNavigator();
 
@@ -16,12 +15,11 @@ const App = () => (
         <stack.Navigator initialRouteName="crypto">
           <stack.Screen
             name="crypto"
-            component={crypto}
+            component={Cryptos}
             options={{
               headerShown: false,
             }}
           />
-          <stack.Screen name="addCrypto" component={addCrypto} />
         </stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

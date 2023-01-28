@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 import theme from '../../themes';
-import { StyleTypes } from './types';
-
+import {StyleTypes} from './types';
 
 export const Container = styled.View`
   margin-top: 30px;
