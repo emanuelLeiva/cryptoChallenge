@@ -16,7 +16,6 @@ function List() {
     setCryptos([]);
     const getCryptos = async (coin: string) => {
       const URL = `${API_URL}${coin}/metrics#`;
-      console.log('API_URL', API_URL);
       const cryptos = await axios.get(URL);
       setCryptos(prev => [...prev, cryptos.data.data]);
     };
