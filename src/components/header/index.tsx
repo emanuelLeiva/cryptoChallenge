@@ -1,4 +1,4 @@
-import {Head, ImageStyle, ProfileImage, Title} from './style';
+import {Head, ProfileImage, Title} from './style';
 import React from 'react';
 import Profile from '../../assets/profilePicture.jpg';
 const Header = () => (

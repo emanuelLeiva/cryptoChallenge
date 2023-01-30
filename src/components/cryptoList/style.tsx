@@ -14,9 +14,8 @@ export const Container = styled.View`
 export const NameContainer = styled.View`
   flex-direction: column;
   position: absolute;
- padding-left: 68px
- margin-bottom:15px;
-  
+  padding-left: 68px;
+  margin-bottom: 15px;
 `;
 
 export const NameCryp = styled.Text`
@@ -40,7 +39,6 @@ export const LogoContainer = styled.View`
 export const Logo = styled.Image`
   width: 48px;
   height: 48px;
-
   align-items: flex-start;
   margin-top: 1px;
   margin-bottom: 1px;
@@ -54,8 +52,7 @@ export const Price = styled.Text`
   font-size: 16px;
   font-weight: 600;
   margin-right: 5px;
-  margin-top:3px;
-
+  margin-top: 3px;
   color: ${({theme}) => theme.colors.name};
 `;
 
@@ -89,7 +86,7 @@ export const ArrowU = styled.Image`
 `;
 
 export const Separator = styled.View`
-  border-width: .6px;
+  border-width: 0.6px;
   border-bottom-color: ${({theme}) => theme.colors.separator};
   margin-top: 20px;
   margin-left: 20px;
