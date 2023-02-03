@@ -1,26 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, FlatList} from 'react-native';
 import Cryptoitems from '../../components/cryptoList';
 import Header from '../../components/header';
 import Button from '../../components/AddCrypto';
-import {AddButton} from './style';
-import axios from 'axios';
-import {Crypto} from '../../components/cryptoList/types';
-import {API_URL} from '@env';
-const cryptoslogo = ['btc', 'eth', 'xrp', 'ada'];
+import {useSelector} from 'react-redux';
 
-function List() {
-  const [cryptos, setCryptos] = useState<Crypto[]>([]);
+interface ListProps {
+  navigation: {
+    navigate: (routeName: string) => void;
+  };
+}
 
-  useEffect(() => {
-    setCryptos([]);
-    const getCryptos = async (coin: string) => {
-      const URL = `${API_URL}${coin}/metrics#`;
-      const cryptos = await axios.get(URL);
-      setCryptos(prev => [...prev, cryptos.data.data]);
-    };
-    cryptoslogo.forEach(cryptos => getCryptos(cryptos));
-  }, []);
+function List({navigation}: ListProps) {
+  const cryptos = useSelector(state => state.crypto.cryptos);
+
   return (
     <View>
       <View>
@@ -31,9 +24,10 @@ function List() {
           renderItem={({item}) => <Cryptoitems item={item} />}
         />
       </View>
-      <AddButton>
-        <Button />
-      </AddButton>
+      <Button
+        text="+ Add a Cryptocurrency"
+        onPress={() => navigation.navigate('Laotrascreen')}
+      />
     </View>
   );
 }
