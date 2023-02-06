@@ -8,34 +8,23 @@ import {createStackNavigator} from '@react-navigation/stack';
 import AddCryptoScreen from './src/screens/AddCryptoScreen';
 import {Provider} from 'react-redux';
 import {store} from './src/redux/store';
-import 'react-native-gesture-handler';
 
 const stack = createStackNavigator();
 
 const App = () => (
   <Provider store={store}>
-    <>
-      <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <stack.Navigator initialRouteName="crypto">
-            <stack.Screen
-              name="crypto"
-              component={Cryptos}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <stack.Screen
-              name="Laotrascreen"
-              component={AddCryptoScreen}
-              options={{
-                headerShown: false,
-              }}
-            />
-          </stack.Navigator>
-        </NavigationContainer>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <stack.Navigator
+          initialRouteName="crypto"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <stack.Screen name="crypto" component={Cryptos} />
+          <stack.Screen name="CryptoLoad" component={AddCryptoScreen} />
+        </stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   </Provider>
 );
 

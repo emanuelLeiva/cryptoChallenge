@@ -1,6 +1,15 @@
-import {Alert, Text, View} from 'react-native';
+import {Alert, KeyboardAvoidingView, Text, View} from 'react-native';
 import {Container} from '../../components/cryptoList/style';
-import {AddBut, AddCryp, AddText, TextCrypro, TitleAdd} from './style';
+import {
+  AddBut,
+  AddCryp,
+  AddText,
+  TextCrypro,
+  TitleAdd,
+  ContDuo,
+  ContThird,
+  BackBot,
+} from './style';
 import {useDispatch} from 'react-redux';
 import React, {useState} from 'react';
 import {useLazyGetCryptoQuery} from '../../redux/api/crypto';
@@ -8,7 +17,7 @@ import {useEffect} from 'react';
 import {add} from '../../redux/cryptoSlice';
 import theme from '../../themes';
 
-interface LaotrascreenProps {
+interface cryptoLoadProps {
   navigation: {
     navigate: (routeName: string) => void;
   };
@@ -17,7 +26,7 @@ interface LaotrascreenProps {
   };
 }
 
-const Laotrascreen = ({navigation}: LaotrascreenProps) => {
+const CryptoLoad = ({navigation}: cryptoLoadProps) => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [getCrypto, {data}] = useLazyGetCryptoQuery();
@@ -38,36 +47,42 @@ const Laotrascreen = ({navigation}: LaotrascreenProps) => {
     }
     getCrypto(inputValue);
   };
-
   return (
     <>
-      <AddBut onPress={() => navigation.navigate('crypto')}>
-        <Text>&lt; back to list</Text>
-      </AddBut>
+      <KeyboardAvoidingView behavior="height">
+        <AddBut onPress={() => navigation.navigate('crypto')}>
+          <BackBot>&lt; Back to list</BackBot>
+        </AddBut>
 
-      <Container>
-        <TitleAdd>
-          <Text>Add a Cryptocurrency</Text>
-        </TitleAdd>
-      </Container>
+        <ContThird>
+          <Container>
+            <TitleAdd>
+              <Text>Add a Cryptocurrency</Text>
+            </TitleAdd>
+          </Container>
 
-      <View>
-        <TextCrypro
-          placeholder="Use a name or ticker symbol..."
-          onChangeText={text => setInputValue(text)}
-          onBlur={() => setBorder(theme.colors.divider)}
-          onFocus={() => setBorder(theme.colors.yellow)}
-          style={{borderColor}}
-        />
-      </View>
+          <ContDuo>
+            <View>
+              <TextCrypro
+                placeholder="Use a name or ticker symbol..."
+                onChangeText={setInputValue}
+                onBlur={() => setBorder(theme.colors.divider)}
+                onFocus={() => setBorder(theme.colors.yellow)}
+                style={{borderColor}}
+              />
+            </View>
 
-      <View>
-        <AddCryp onPress={handleAddCrypto}>
-          <AddText>Add</AddText>
-        </AddCryp>
-      </View>
+            <View>
+              <AddCryp onPress={handleAddCrypto}>
+                <AddText>Add</AddText>
+              </AddCryp>
+            </View>
+          </ContDuo>
+        </ContThird>
+      </KeyboardAvoidingView>
     </>
   );
 };
-
-export default Laotrascreen;
+export default CryptoLoad;
+/*
+ */

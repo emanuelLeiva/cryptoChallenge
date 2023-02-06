@@ -2,8 +2,7 @@ import {ImageSourcePropType} from 'react-native';
 
 export type InitialStateType = {
   cryptos: Crypto[];
-  crypto: Crypto[];
-  id: string | undefined;
+  id?: string;
   State: string;
 };
 

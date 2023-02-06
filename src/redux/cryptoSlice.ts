@@ -3,9 +3,7 @@ import {InitialStateType} from './types';
 
 const initialState: InitialStateType = {
   cryptos: [],
-  crypto: [],
-  id: '',
-  State: ''
+  State: '',
 };
 
 const cryptoSlice = createSlice({
@@ -13,7 +11,7 @@ const cryptoSlice = createSlice({
   initialState,
   reducers: {
     add: (state, {payload}) => {
-      if (state.cryptos.find(crypto => crypto.id === payload.id) === undefined)
+      if (state.cryptos.find(({ id }) => id === payload.id) === undefined)
         state.cryptos = [...state.cryptos, payload];
     },
   },

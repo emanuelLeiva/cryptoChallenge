@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, FlatList} from 'react-native';
 import Cryptoitems from '../../components/cryptoList';
 import Header from '../../components/header';
-import Button from '../../components/AddCrypto';
+import Button from '../../components/Button';
 import {useSelector} from 'react-redux';
 
 interface ListProps {
@@ -26,7 +26,7 @@ function List({navigation}: ListProps) {
       </View>
       <Button
         text="+ Add a Cryptocurrency"
-        onPress={() => navigation.navigate('Laotrascreen')}
+        onPress={() => navigation.navigate('CryptoLoad')}
       />
     </View>
   );

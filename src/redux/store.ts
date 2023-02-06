@@ -1,8 +1,9 @@
 import cryptoReducer from './cryptoSlice';
-import {Action, configureStore, Store} from '@reduxjs/toolkit';
+import {configureStore, Store} from '@reduxjs/toolkit';
 import {criptoApi} from './api/crypto';
 
-export const store: Store<{[key: string]: any}, Action<any>> = configureStore({
+
+export const store: Store = configureStore({
   reducer: {
     crypto: cryptoReducer,
     [criptoApi.reducerPath]: criptoApi.reducer,
