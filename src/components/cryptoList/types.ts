@@ -9,7 +9,7 @@ export type CryptoitemsProps = {
 };
 
 export type Crypto = {
-  data: any;
+  data: string;
   id: string;
   name: string;
   symbol: string;

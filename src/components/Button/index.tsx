@@ -7,7 +7,7 @@ type ButtonProps = {
   onPress: () => void;
 };
 
-const Button: React.FC<ButtonProps> = ({text, onPress}) => (
+const Button=({text, onPress}:ButtonProps) => (
   <AddButton onPress={onPress}>
     <Text>{text}</Text>
   </AddButton>
