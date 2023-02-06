@@ -1,14 +1,13 @@
 import {Alert, KeyboardAvoidingView, Text, View} from 'react-native';
-import {Container} from '../../components/cryptoList/style';
 import {
-  AddBut,
-  AddCryp,
-  AddText,
-  TextCrypro,
-  TitleAdd,
   ContDuo,
-  ContThird,
-  BackBot,
+  OverallCont,
+  BackText,
+  InputBox,
+  AddButton,
+  BackButton,
+  TitleAdd,
+  AddText,
 } from './style';
 import {useDispatch} from 'react-redux';
 import React, {useState} from 'react';
@@ -30,7 +29,6 @@ const CryptoLoad = ({navigation}: cryptoLoadProps) => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [getCrypto, {data}] = useLazyGetCryptoQuery();
-
   const [borderColor, setBorder] = useState(theme.colors.divider);
 
   useEffect(() => {
@@ -50,20 +48,18 @@ const CryptoLoad = ({navigation}: cryptoLoadProps) => {
   return (
     <>
       <KeyboardAvoidingView behavior="height">
-        <AddBut onPress={() => navigation.navigate('crypto')}>
-          <BackBot>&lt; Back to list</BackBot>
-        </AddBut>
+        <BackButton onPress={() => navigation.navigate('crypto')}>
+          <BackText>&lt; Back to list</BackText>
+        </BackButton>
 
-        <ContThird>
-          <Container>
-            <TitleAdd>
-              <Text>Add a Cryptocurrency</Text>
-            </TitleAdd>
-          </Container>
+        <OverallCont>
+          <TitleAdd>
+            <Text>Add a Cryptocurrency</Text>
+          </TitleAdd>
 
           <ContDuo>
             <View>
-              <TextCrypro
+              <InputBox
                 placeholder="Use a name or ticker symbol..."
                 onChangeText={setInputValue}
                 onBlur={() => setBorder(theme.colors.divider)}
@@ -73,12 +69,12 @@ const CryptoLoad = ({navigation}: cryptoLoadProps) => {
             </View>
 
             <View>
-              <AddCryp onPress={handleAddCrypto}>
+              <AddButton onPress={handleAddCrypto}>
                 <AddText>Add</AddText>
-              </AddCryp>
+              </AddButton>
             </View>
           </ContDuo>
-        </ContThird>
+        </OverallCont>
       </KeyboardAvoidingView>
     </>
   );

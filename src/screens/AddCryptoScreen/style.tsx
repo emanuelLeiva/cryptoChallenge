@@ -2,18 +2,22 @@ import styled from 'styled-components/native';
 import theme from '../../themes';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
-export const Container = styled(View)``;
 
-export const AddBut = styled(Text)`
+export const BackButton = styled(Text)`
   padding-top: 16px;
   margin-left: 24px;
 `;
-export const BackBot = styled(Text)`
+
+export const BackText = styled(Text)`
   margin-top: 14px;
   font-size: 16px;
-
   color: ${theme.colors.main};
 `;
+
+export const OverallCont = styled(View)`
+  margin-top: 40%;
+`;
+
 export const TitleAdd = styled(Text)`
   font-size: 24px;
   font-weight: 700;
@@ -21,23 +25,22 @@ export const TitleAdd = styled(Text)`
   margin-left: 15px;
   color: ${theme.colors.name};
 `;
+
 export const ContDuo = styled(View)`
   margin-left: 25px;
   margin-right: 25px;
   display: flex;
 `;
-export const ContThird = styled(Container)`
-  margin-top: 40%;
-`;
 
-export const TextCrypro = styled(TextInput)`
+export const InputBox = styled(TextInput)`
   border-width: 1px;
   padding: 13px;
   margin-top: 24px;
   border-color: ${theme.colors.divider};
   background-color: ${theme.colors.separator};
 `;
-export const AddCryp = styled(TouchableOpacity)`
+
+export const AddButton = styled(TouchableOpacity)`
   display: flex;
   margin-top: 16px;
   margin-left: 57%;
