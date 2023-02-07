@@ -4,7 +4,7 @@ import {Crypto} from '../../components/cryptoList/types';
 
 type GetCryptoResponse = Crypto;
 
-export const criptoApi = createApi({
+export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',
   baseQuery: fetchBaseQuery({baseUrl: API_URL}),
   endpoints: builder => ({
@@ -14,4 +14,4 @@ export const criptoApi = createApi({
   }),
 });
 
-export const {useLazyGetCryptoQuery} = criptoApi;
+export const {useLazyGetCryptoQuery} = cryptoApi;

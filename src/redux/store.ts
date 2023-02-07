@@ -1,15 +1,15 @@
 import cryptoReducer from './cryptoSlice';
 import {configureStore, Store} from '@reduxjs/toolkit';
-import {criptoApi} from './api/crypto';
+import {cryptoApi} from './api/crypto';
 
 
 export const store: Store = configureStore({
   reducer: {
     crypto: cryptoReducer,
-    [criptoApi.reducerPath]: criptoApi.reducer,
+    [cryptoApi.reducerPath]: cryptoApi.reducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(criptoApi.middleware),
+    getDefaultMiddleware().concat(cryptoApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
