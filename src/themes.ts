@@ -7,6 +7,8 @@ const theme = {
     priceUp: '#0A8150',
     priceD: '#DE3617',
     separator: '#E4E8EB',
+    divider: '#B7C0C6',
+    yellow: '#FBD24D'
   },
 };
 

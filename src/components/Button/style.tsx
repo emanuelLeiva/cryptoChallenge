@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const AddButton = styled.View`
+export const AddButton = styled.TouchableOpacity`
   display: flex;
   align-items: center;
   font-size: 16px;

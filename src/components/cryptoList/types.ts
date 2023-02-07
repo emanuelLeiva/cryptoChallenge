@@ -1,4 +1,4 @@
-import {ImageSourcePropType} from 'react-native';
+import {ImageSourcePropType, Text} from 'react-native';
 
 export type StyleTypes = {
   isUp?: boolean;
@@ -9,6 +9,7 @@ export type CryptoitemsProps = {
 };
 
 export type Crypto = {
+  data: string;
   id: string;
   name: string;
   symbol: string;
@@ -17,4 +18,8 @@ export type Crypto = {
     price_usd: number;
     percent_change_usd_last_24_hours: number;
   };
+};
+
+export type cryptoTypes = {
+  state: string;
 };
