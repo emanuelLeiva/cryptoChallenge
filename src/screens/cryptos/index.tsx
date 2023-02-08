@@ -1,9 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {View, FlatList} from 'react-native';
 import Cryptoitems from '../../components/cryptoList';
 import Header from '../../components/header';
 import Button from '../../components/Button';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  useLazyGetCryptoQuery,
+  useLazyGetCryptosQuery,
+} from '../../redux/api/crypto';
+import {add, update} from '../../redux/cryptoSlice';
+import {InitialStateType} from '../../redux/types';
 
 interface ListProps {
   navigation: {
@@ -12,7 +18,28 @@ interface ListProps {
 }
 
 function List({navigation}: ListProps) {
-  const cryptos = useSelector(state => state.crypto.cryptos);
+  const [getCryptos, {data}] = useLazyGetCryptosQuery();
+  const dispatch = useDispatch();
+  const cryptos = useSelector(
+    (state: {crypto: InitialStateType}) => state.crypto.cryptos,
+  );
+
+  useEffect(() => {
+    if (data) {
+      dispatch(update(data));
+    }
+  }, [data]);
+
+  const updateCryptos = () => 
+    getCryptos(cryptos.map(({symbol}: {symbol: string}) => symbol));
+  
+
+  useEffect(() => {
+    const intervalCryptos = setInterval(() => updateCryptos(), 3000);
+    return () => {
+      clearInterval(intervalCryptos);
+    };
+  }, [cryptos]);
 
   return (
     <View>

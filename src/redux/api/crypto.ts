@@ -11,7 +11,17 @@ export const cryptoApi = createApi({
     getCrypto: builder.query<GetCryptoResponse, string>({
       query: name => `${name}/metrics#`,
     }),
+    getCryptos: builder.query({
+      queryFn: names => {
+        const promises = names.map((name: string) =>
+          fetch(`${API_URL}${name}/metrics#`),
+        );
+        return Promise.all(promises)
+          .then(results => Promise.all(results.map(result => result.json())))
+          .then(results => ({data: results.map(({data}) => data)}));
+      },
+    }),
   }),
 });
 
-export const {useLazyGetCryptoQuery} = cryptoApi;
+export const {useLazyGetCryptoQuery, useLazyGetCryptosQuery} = cryptoApi;
