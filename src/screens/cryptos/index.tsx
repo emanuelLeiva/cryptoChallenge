@@ -4,11 +4,8 @@ import Cryptoitems from '../../components/cryptoList';
 import Header from '../../components/header';
 import Button from '../../components/Button';
 import {useSelector, useDispatch} from 'react-redux';
-import {
-  useLazyGetCryptoQuery,
-  useLazyGetCryptosQuery,
-} from '../../redux/api/crypto';
-import {add, update} from '../../redux/cryptoSlice';
+import {useLazyGetCryptosQuery} from '../../redux/api/crypto';
+import {update} from '../../redux/cryptoSlice';
 import {InitialStateType} from '../../redux/types';
 
 interface ListProps {
@@ -30,16 +27,15 @@ function List({navigation}: ListProps) {
     }
   }, [data]);
 
-  const updateCryptos = () => 
-    getCryptos(cryptos.map(({symbol}: {symbol: string}) => symbol));
-  
-
   useEffect(() => {
     const intervalCryptos = setInterval(() => updateCryptos(), 3000);
     return () => {
       clearInterval(intervalCryptos);
     };
   }, [cryptos]);
+
+  const updateCryptos = () =>
+    getCryptos(cryptos.map(({symbol}: {symbol: string}) => symbol));
 
   return (
     <View>
