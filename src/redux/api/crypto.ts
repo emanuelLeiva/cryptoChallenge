@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {API_URL, API_KEY} from '@env';
 import {Crypto} from '../../components/cryptoList/types';
 
-type GetCryptoResponse = Crypto;
+type GetCryptoResponse = {data: Crypto};
 
 export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',
