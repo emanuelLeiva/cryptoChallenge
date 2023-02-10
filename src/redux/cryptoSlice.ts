@@ -11,11 +11,16 @@ const cryptoSlice = createSlice({
   initialState,
   reducers: {
     add: (state, {payload}) => {
-      if (state.cryptos.find(({ id }) => id === payload.id) === undefined)
+      if (state.cryptos.find(({id}) => id === payload.id) === undefined)
         state.cryptos = [...state.cryptos, payload];
+    },
+    update: (state, {payload}) => {
+      state.cryptos = state.cryptos.map((crypto, index) =>
+        payload[index] ? payload[index] : crypto,
+      );
     },
   },
 });
 
-export const {add} = cryptoSlice.actions;
+export const {add, update} = cryptoSlice.actions;
 export default cryptoSlice.reducer;
